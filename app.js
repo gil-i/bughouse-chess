@@ -277,7 +277,39 @@ function initSetup() {
   $('#join-code').addEventListener('keydown', e => {
     if (e.key === 'Enter') $('#join-btn').click();
   });
+  $('#online-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter' && $('#join-code').value.trim()) $('#join-btn').click();
+  });
   $('#lobby-leave').addEventListener('click', () => { leaveOnline(); showSetup(); });
+  $('#copy-invite').addEventListener('click', async () => {
+    const ok = await copyText($('#invite-link').textContent);
+    toast(ok ? 'Invite link copied!' : 'Could not copy — select the link manually');
+  });
+
+  // ?join=CODE deep link: pre-fill the code so an invited friend only
+  // needs to type a name and press Enter
+  const joinCode = new URLSearchParams(location.search).get('join');
+  if (joinCode) {
+    $('#join-code').value = joinCode.toUpperCase().slice(0, 6);
+    $('#online-name').focus();
+    toast('You were invited to a game — enter your name and press Enter');
+  }
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch (e) {
+    try {
+      const ta = el('textarea', null, document.body);
+      ta.value = text;
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      return ok;
+    } catch (e2) { return false; }
+  }
 }
 
 function showSetup() {
@@ -488,6 +520,9 @@ function showLobby(lobby) {
   $('#game').classList.add('hidden');
   $('#lobby').classList.remove('hidden');
   $('#lobby-code').textContent = lobby.code;
+  // utm_source=invite separates player-recruited traffic from your own
+  // promo links in the analytics dashboard
+  $('#invite-link').textContent = `${location.origin}/?join=${lobby.code}&utm_source=invite`;
 
   const wrap = $('#lobby-seats');
   wrap.innerHTML = '';

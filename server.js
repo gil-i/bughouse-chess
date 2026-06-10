@@ -52,6 +52,13 @@ const httpServer = http.createServer((req, res) => {
   fs.readFile(filePath, (err, data) => {
     if (err) { res.writeHead(404).end('not found'); return; }
     res.writeHead(200, { 'Content-Type': MIME[ext] });
+    if (urlPath === '/index.html') {
+      // make og:image & friends absolute for whatever domain we're on
+      const proto = req.headers['x-forwarded-proto'] || 'http';
+      const origin = `${proto}://${req.headers.host || `localhost:${PORT}`}`;
+      res.end(data.toString().replace(/__ORIGIN__/g, origin));
+      return;
+    }
     res.end(data);
   });
 });

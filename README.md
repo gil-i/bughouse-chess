@@ -53,9 +53,11 @@ state. Clients only send intents, so nobody can move out of turn or forge
 actions for another board.
 
 - One player clicks **Create game** (their time control is used) and shares
-  the 6-character room code.
-- Everyone joins with the code and picks a seat; the game starts
-  automatically when all four seats are taken.
+  the invite link shown in the lobby (`/?join=CODE&utm_source=invite` — the utm tag separates player-recruited visits in analytics) — or just the
+  6-character code.
+- An invited friend lands with the code pre-filled: type a name, press
+  Enter, pick a seat. The game starts automatically when all four seats
+  are taken.
 - If someone's connection drops, their seat is held — the client
   reconnects automatically and resumes with full state. Any player can
   trigger a **rematch** from the game-over screen.
@@ -83,6 +85,17 @@ after that waits ~30–60 s for the cold start. Active games are unaffected
 (the server stays awake while connections are open), but a game in progress
 does not survive a service restart/redeploy.
 
+## Sharing & analytics
+
+- Links shared on Discord/WhatsApp/Twitter render a preview card: the
+  Open Graph tags in `index.html` use an `__ORIGIN__` token that the
+  server replaces with the live domain, and `og.png` (1200×630) is the
+  card image. Regenerate `og.png` any time by screenshotting a game.
+- Analytics are off by default. To enable: create a free
+  [GoatCounter](https://www.goatcounter.com) account, uncomment the
+  snippet at the bottom of `index.html`, replace `MYCODE` with your site
+  code, and update `privacy.html` (GoatCounter is cookieless).
+
 ## Development
 
 ```
@@ -98,5 +111,10 @@ npm run test:online
   mode, and the online protocol
 - `server.js` — authoritative server: static files, WebSocket rooms,
   validation, clocks, reconnection
-- `pieces/` — "staunty" SVG piece set by sadsnake1, from
-  [lichess](https://github.com/lichess-org/lila) (CC BY-NC-SA 4.0)
+- `pieces/` — "cburnett" SVG piece set by Colin M.L. Burnett, from
+  [lichess](https://github.com/lichess-org/lila) (CC BY-SA 3.0 —
+  commercial use permitted with attribution; chosen deliberately so the
+  site can be monetized)
+- `rules.html`, `privacy.html` — content pages (game guide, privacy
+  policy). Fill in the contact placeholder in `privacy.html` before
+  going live; an AdSense consent banner must be added before enabling ads.

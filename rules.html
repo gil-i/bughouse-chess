@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How to Play — Bughouse 2v2 Chess</title>
+  <meta name="description" content="Complete rules and strategy guide for Bughouse 2v2 chess: team play across two boards, piece drops, the no-drop-check rule, promotion by capture from the partner board, premoves and clock tactics.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page">
+  <main class="article">
+    <p class="crumbs"><a href="/">← Back to the game</a></p>
+    <h1>♞ How to Play Bughouse 2v2</h1>
+
+    <p>Bughouse is team chess: four players, two boards, one shared fate.
+    You and your partner play opposite colors on adjacent boards, and every
+    piece you capture goes to your partner's hand to be dropped back into
+    their game. This site implements bughouse with a few house rules of its
+    own, explained below.</p>
+
+    <h2>The basics</h2>
+    <ul>
+      <li><strong>Teams.</strong> Team 1 plays White on board A and Black on
+        board B; Team 2 plays the remaining two seats. You always see your
+        own board on the left, from your side of the table.</li>
+      <li><strong>Captures cross over.</strong> When you capture a piece, it
+        appears in your <em>teammate's</em> reserve on the other board.
+        Because your teammate plays the color you are capturing, the piece
+        arrives ready for them to use.</li>
+      <li><strong>Drops.</strong> On your turn you may either make a normal
+        chess move or place a piece from your reserve on any empty square
+        (with the restrictions below). Click a reserve piece or drag it onto
+        the board — a ghost preview shows where it will land.</li>
+      <li><strong>Winning.</strong> The first checkmate or flag fall on
+        either board ends the match for both teams. There is no coming back
+        from your partner's loss, so watch their board too!</li>
+    </ul>
+
+    <h2>House rules</h2>
+    <ul>
+      <li><strong>No drop may give check.</strong> Unlike classic bughouse,
+        you cannot place a piece so that it attacks the enemy king. Drops
+        are for defense and development — checks must be earned with moves.</li>
+      <li><strong>Pawn drop limits.</strong> A pawn may not be dropped on
+        your relative 7th or 8th rank (ranks 1–2 from Black's side), nor on
+        your own back rank.</li>
+      <li><strong>Promotion takes a piece from the other board.</strong>
+        When your pawn reaches the last rank, you don't conjure a new queen —
+        you remove a knight, bishop, rook or queen of your own color from
+        the partner board (it belongs to the opposing team's player there),
+        and your pawn becomes that piece. A piece whose removal would leave
+        a king in check over there — a pinned piece — cannot be taken. If
+        nothing can be taken, the pawn simply cannot promote yet.</li>
+      <li><strong>Promoted pieces are temporary.</strong> When a promoted
+        piece is captured, it reverts to a pawn in the capturer's team's
+        hand, as in classic bughouse.</li>
+      <li><strong>Sitting is legal.</strong> If you are in check with no
+        move, but a future drop could block the check, you are not mated —
+        you may wait for your partner to capture the piece you need while
+        your clock runs. Only unstoppable checks (contact and knight checks
+        with no escape) are checkmate.</li>
+    </ul>
+
+    <h2>Controls</h2>
+    <ul>
+      <li><strong>Moving:</strong> click a piece then its destination, or
+        drag and drop. Legal squares are highlighted; the hovered square
+        glows during a drag.</li>
+      <li><strong>Dropping:</strong> click or drag a piece from your reserve.
+        A translucent ghost previews the placement.</li>
+      <li><strong>Premove:</strong> while your opponent thinks, you may queue
+        one move or drop (shown in purple). It plays instantly when your turn
+        arrives, or is cancelled if it became illegal. Right-click your board
+        to cancel it. A premoved promotion takes the strongest piece
+        available.</li>
+      <li><strong>Asking for pieces:</strong> the "Ask for" buttons send your
+        teammate a pulsing notification, and the matching enemy pieces glow
+        on their board so they know what to hunt.</li>
+    </ul>
+
+    <h2>Clocks and time</h2>
+    <p>Every player has an independent clock and both boards run at the same
+    time. Pick a preset from 1+0 bullet up to 10+0 rapid, or set custom
+    minutes and increment. The increment is added after each of your moves.
+    In online games the server keeps the official time, so laggy connections
+    can't bend the clock.</p>
+
+    <h2>A little strategy</h2>
+    <ul>
+      <li><strong>Talk to your partner.</strong> Bughouse is a conversation.
+        Use the piece-request buttons: a knight in hand at the right moment
+        is worth more than a rook tomorrow.</li>
+      <li><strong>Trades are never neutral.</strong> Every capture you make
+        arms your partner — and every piece you lose arms your opponent's
+        partner. A "fair" trade on your board can be a disaster on the
+        other one.</li>
+      <li><strong>Mind the no-drop-check rule.</strong> Since drops can't
+        give check, mating attacks need normal moves to deliver the final
+        blow. Drops shine as blockers — keep a pawn in hand to plug a check
+        before it becomes mate.</li>
+      <li><strong>Promotion is a weapon against the other board.</strong>
+        Pushing a pawn to the 8th doesn't just upgrade your army, it
+        physically removes an enemy piece from your partner's game. A far
+        advanced pawn forces the opposing team to keep their pieces pinned
+        defensively — sometimes literally.</li>
+      <li><strong>Watch both clocks.</strong> If your opponent is low on
+        time, slowing down on your own board can win the match next door.</li>
+    </ul>
+
+    <h2>Playing online</h2>
+    <p>Click <em>Create game</em>, share the 6-character code, and have your
+    friends join and pick seats. The match starts when all four seats are
+    taken. If someone disconnects their seat is held and they reconnect
+    automatically with the full position restored. After a game, any player
+    can start a rematch.</p>
+
+    <footer class="page-footer">
+      <a href="/">Play</a> · <a href="rules.html">How to play</a> ·
+      <a href="privacy.html">Privacy</a>
+      <p class="credits">Chess piece images by Colin M.L. Burnett ("cburnett"),
+        licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+    </footer>
+  </main>
+</body>
+</html>

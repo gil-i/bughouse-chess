@@ -77,11 +77,25 @@ async function move(page, boardId, from, to) {
       return c && c.textContent.length === 6 ? c.textContent : null;
     }, 'lobby code');
 
-    // --- Others join with the code ---
+    // --- og:image is rendered absolute for the current host ---
+    const ogImage = await pAlice.evaluate(() =>
+      document.querySelector('meta[property=\"og:image\"]').content);
+    assert.strictEqual(ogImage, `${URL}/og.png`, 'og:image absolute URL substituted by server');
+
+    // --- The lobby shows a shareable invite link ---
+    const invite = await pAlice.$eval('#invite-link', e => e.textContent);
+    assert.strictEqual(invite, `${URL}/?join=${code}&utm_source=invite`,
+      'invite link shown in lobby with utm tagging');
+
+    // --- Others join via the invite deep link (code pre-filled) ---
     for (let i = 1; i < 4; i++) {
+      // p1 uses the exact tagged invite link; others a lowercase code variant
+      const link = i === 1 ? invite : `${URL}/?join=${code.toLowerCase()}`;
+      await pages[i].goto(link);
+      const prefilled = await pages[i].$eval('#join-code', e => e.value);
+      assert.strictEqual(prefilled, code, `p${i} deep link pre-fills the room code`);
       await pages[i].type('#online-name', NAMES[i]);
-      await pages[i].type('#join-code', code);
-      await pages[i].click('#join-btn');
+      await pages[i].keyboard.press('Enter'); // Enter in the name field joins
       await waitFor(pages[i], () => !document.querySelector('#lobby').classList.contains('hidden'), `p${i} in lobby`);
     }
 

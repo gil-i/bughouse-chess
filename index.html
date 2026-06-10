@@ -3,7 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bughouse 2v2 Chess</title>
+  <title>Bughouse 2v2 Chess — play online with friends, no sign-up</title>
+  <meta name="description" content="Free 2v2 bughouse chess online. No sign-up: create a game, share the code, and play team chess on two boards with piece drops, premoves and four clocks.">
+  <link rel="icon" href="pieces/wN.svg" type="image/svg+xml">
+  <meta property="og:title" content="Bughouse 2v2 Chess — play online with friends">
+  <meta property="og:description" content="Free team chess on two boards. No sign-up — share a code and play in seconds.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="__ORIGIN__/">
+  <meta property="og:image" content="__ORIGIN__/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bughouse 2v2 Chess — play online with friends">
+  <meta name="twitter:description" content="Free team chess on two boards. No sign-up — share a code and play in seconds.">
+  <meta name="twitter:image" content="__ORIGIN__/og.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -62,12 +73,22 @@
       one premove allowed ·
       first checkmate or flag ends the match for both boards.
     </div>
+
+    <footer class="page-footer">
+      <a href="rules.html">How to play</a> · <a href="privacy.html">Privacy</a>
+      <p class="credits">Chess piece images by Colin M.L. Burnett ("cburnett"),
+        licensed <a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>.</p>
+    </footer>
   </div>
 
   <div id="lobby" class="hidden">
     <h1>♞ Game lobby</h1>
     <p class="lobby-code-line">Code: <span id="lobby-code"></span></p>
-    <p class="sub">Share the code with your friends. The game starts when all four seats are taken.</p>
+    <p class="invite-row">
+      <span id="invite-link"></span>
+      <button id="copy-invite">Copy link</button>
+    </p>
+    <p class="sub">Send the link (or code) to your friends. The game starts when all four seats are taken.</p>
     <div id="lobby-seats"></div>
     <p id="lobby-status">Waiting for players…</p>
     <button id="lobby-leave">Leave</button>
@@ -118,5 +139,10 @@
 
   <script src="engine.js"></script>
   <script src="app.js"></script>
+  <!-- Analytics (disabled). To enable: create a free account at goatcounter.com,
+       replace MYCODE below with your site code, uncomment, and update privacy.html
+       (GoatCounter is cookieless, but the policy currently says "no analytics").
+  <script data-goatcounter="https://MYCODE.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+  -->
 </body>
 </html>

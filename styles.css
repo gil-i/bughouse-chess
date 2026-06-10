@@ -108,6 +108,16 @@ button:hover { filter: brightness(1.2); }
   font-size: 1.6rem; font-weight: 800; letter-spacing: 6px; color: var(--warn);
   background: var(--bg2); border-radius: 8px; padding: 4px 14px; margin-left: 6px;
 }
+.invite-row {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  flex-wrap: wrap;
+}
+#invite-link {
+  background: var(--bg2); border-radius: 6px; padding: 6px 12px;
+  font-size: 0.9rem; color: var(--team1); user-select: all;
+}
+#copy-invite { background: var(--accent); color: #14160f; font-weight: 700; padding: 6px 14px; }
+
 #lobby-seats { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin: 28px 0; }
 .lobby-team {
   border: 2px solid var(--bg2); border-radius: 12px; padding: 12px 18px; min-width: 240px;
@@ -156,6 +166,32 @@ button:hover { filter: brightness(1.2); }
   border-radius: 8px; padding: 10px 18px; z-index: 200;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
+
+/* ---------- Static pages (rules, privacy) ---------- */
+
+.article {
+  max-width: 720px; margin: 0 auto; padding: 32px 22px 48px;
+  line-height: 1.65;
+}
+.article h1 { font-size: 1.8rem; }
+.article h2 { margin-top: 32px; color: var(--accent); font-size: 1.15rem; }
+.article a { color: var(--team1); }
+.article ul { padding-left: 22px; }
+.article li { margin: 8px 0; }
+.article .muted { color: var(--muted); font-size: 0.85rem; }
+.article code { background: var(--bg2); border-radius: 4px; padding: 1px 6px; }
+.crumbs { font-size: 0.85rem; }
+.crumbs a { color: var(--muted); text-decoration: none; }
+.crumbs a:hover { color: var(--fg); }
+
+.page-footer {
+  margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--bg2);
+  color: var(--muted); font-size: 0.85rem;
+}
+.page-footer .credits { font-size: 0.75rem; margin-top: 10px; }
+#setup .page-footer { border-top: none; text-align: center; }
+#setup .page-footer a { color: var(--muted); }
+#setup .page-footer a:hover { color: var(--fg); }
 
 .board {
   display: grid;
