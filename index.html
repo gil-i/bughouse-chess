@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bughouse 2v2 Chess</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="setup">
+    <h1>♞ Bughouse 2v2</h1>
+    <p class="sub">Two boards, two teams. Captured pieces go to your teammate's reserve
+      on the other board — drag a reserve piece onto the board to drop it.</p>
+
+    <div class="tc">
+      <h3>Time control</h3>
+      <div id="tc-presets"></div>
+      <div class="custom">
+        <label>Minutes <input type="number" id="tc-min" value="5" min="1" max="180"></label>
+        <label>Increment (s) <input type="number" id="tc-inc" value="0" min="0" max="60"></label>
+      </div>
+    </div>
+
+    <div class="modes">
+      <fieldset class="mode-box">
+        <legend>Play online</legend>
+        <label class="online-name">Your name <input id="online-name" placeholder="Your name" maxlength="14"></label>
+        <div class="online-actions">
+          <button id="create-btn">Create game</button>
+          <span class="or">or</span>
+          <input id="join-code" placeholder="CODE" maxlength="6" autocapitalize="characters">
+          <button id="join-btn">Join</button>
+        </div>
+        <p class="mode-hint">Create a game, share the code, and pick seats in the lobby.
+          The creator's time control is used.</p>
+      </fieldset>
+
+      <fieldset class="mode-box">
+        <legend>Play local (one screen)</legend>
+        <div class="teams">
+          <div class="team team1">
+            <h4>Team 1</h4>
+            <label>White · Board A <input id="name-A-w" placeholder="Player 1" maxlength="14"></label>
+            <label>Black · Board B <input id="name-B-b" placeholder="Player 2" maxlength="14"></label>
+          </div>
+          <div class="team team2">
+            <h4>Team 2</h4>
+            <label>Black · Board A <input id="name-A-b" placeholder="Player 3" maxlength="14"></label>
+            <label>White · Board B <input id="name-B-w" placeholder="Player 4" maxlength="14"></label>
+          </div>
+        </div>
+        <button id="start-btn">Start local game</button>
+      </fieldset>
+    </div>
+
+    <div class="rules">
+      <strong>House rules:</strong> a drop may never give check ·
+      pawns can't be dropped on your 7th/8th relative ranks ·
+      you promote by taking an unpinned piece of your color from the other board ·
+      promoted pieces revert to pawns when captured ·
+      one premove allowed ·
+      first checkmate or flag ends the match for both boards.
+    </div>
+  </div>
+
+  <div id="lobby" class="hidden">
+    <h1>♞ Game lobby</h1>
+    <p class="lobby-code-line">Code: <span id="lobby-code"></span></p>
+    <p class="sub">Share the code with your friends. The game starts when all four seats are taken.</p>
+    <div id="lobby-seats"></div>
+    <p id="lobby-status">Waiting for players…</p>
+    <button id="lobby-leave">Leave</button>
+  </div>
+
+  <div id="game" class="hidden">
+    <header>
+      <span class="title">♞ Bughouse 2v2</span>
+      <span id="matchup"></span>
+      <span id="net-status"></span>
+      <button id="newgame-btn">⟲ New game</button>
+    </header>
+    <main>
+      <section class="col" id="col-A">
+        <h2>Board A</h2>
+        <div class="panel" id="panel-A-b"></div>
+        <div class="board" id="board-A"></div>
+        <div class="panel" id="panel-A-w"></div>
+      </section>
+      <section class="col" id="col-B">
+        <h2>Board B</h2>
+        <div class="panel" id="panel-B-w"></div>
+        <div class="board" id="board-B"></div>
+        <div class="panel" id="panel-B-b"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="promo" class="overlay hidden">
+    <div class="dialog">
+      <h3>Promote — take a piece from the other board</h3>
+      <div id="promo-choices"></div>
+    </div>
+  </div>
+
+  <div id="gameover" class="overlay hidden">
+    <div class="dialog">
+      <h2 id="go-title"></h2>
+      <p id="go-reason"></p>
+      <div class="dialog-buttons">
+        <button id="rematch-btn">Rematch</button>
+        <button id="tosetup-btn">Change settings</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="hidden"></div>
+
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

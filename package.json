@@ -1,0 +1,22 @@
+{
+  "name": "bughouse-2v2",
+  "version": "2.0.0",
+  "description": "2v2 bughouse chess: two boards, captured pieces go to your teammate's reserve. Local hotseat or online play.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/engine.test.js && node test/ui.test.js && node test/online.test.js",
+    "test:engine": "node test/engine.test.js",
+    "test:ui": "node test/ui.test.js",
+    "test:online": "node test/online.test.js"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "dependencies": {
+    "ws": "^8.21.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^18.2.1"
+  }
+}
